@@ -7,6 +7,7 @@ AutoREST is a .NET 4 WCF based REST engine that supports both JSON and XML.
 
 AutoREST has a few requirements:
 
+* .NET 4.0
 * AspNetCompatibilityRequirementsMode has to be set to allowed.  
 	* This can be done in configuration with this node:
 	
