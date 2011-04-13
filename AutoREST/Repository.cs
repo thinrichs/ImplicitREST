@@ -8,19 +8,6 @@
             _typeMap = typeMap;
         }
 
-        // this needs a better name very badly
-        protected static int BoxIdAsInt(string id)
-        {
-            int identifier;
-            return !int.TryParse(id, out identifier) ? int.MinValue : identifier;
-        }
-        // this needs a better name very badly
-        protected static long BoxIdAsLong(string id)
-        {
-            long identifier;
-            return !long.TryParse(id, out identifier) ? long.MinValue : identifier;
-        }
-
         // TODO:  These static methods are so similar... some way to refactor to common code even though type maps are different types?
         public T Create(T payload)
         {

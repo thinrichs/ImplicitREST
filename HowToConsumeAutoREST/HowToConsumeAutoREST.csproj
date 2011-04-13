@@ -78,8 +78,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>3353</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>
-          </IISUrl>
+          <IISUrl>http://localhost/HowToConsumeAutoREST</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
