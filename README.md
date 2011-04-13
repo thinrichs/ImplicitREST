@@ -14,9 +14,9 @@ AutoREST has a few requirements:
 			
 * Automatic format selection and automatic help require the following configuration:
 	
-	<webHttpEndpoint>
-        <standardEndpoint name="" helpEnabled="true" automaticFormatSelectionEnabled="true"/>
-    </webHttpEndpoint>
+			<webHttpEndpoint>
+				<standardEndpoint name="" helpEnabled="true" automaticFormatSelectionEnabled="true"/>
+			</webHttpEndpoint>
 	
 AutoREST is built on the shoulders of giants, such as:
 
