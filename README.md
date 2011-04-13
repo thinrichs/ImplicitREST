@@ -1,9 +1,9 @@
-AutoREST -- A WCF based REST engine
+AutoREST -- A .NET WCF based REST engine
 ====================================
 
 ## DESCRIPTION
 
-AutoREST is a WCF based REST engine that supports both JSON and XML.
+AutoREST is a .NET 4 WCF based REST engine that supports both JSON and XML.
 
 AutoREST is built on the shoulders of giants, such as 
 [Steve Michelotti](http://geekswithblogs.net/michelotti/archive/2010/08/21/restful-wcf-services-with-no-svc-file-and-no-config.aspx)
