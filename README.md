@@ -21,7 +21,7 @@ AutoREST has a few requirements:
 AutoREST is built on the shoulders of giants, such as:
 
 * [Steve Michelotti](http://geekswithblogs.net/michelotti/archive/2010/08/21/restful-wcf-services-with-no-svc-file-and-no-config.aspx)
-* [StackOverflow](http://www.stackoverflow.com)
+* [StackOverflow in General](http://www.stackoverflow.com)
 * [Andras Zoltan](http://stackoverflow.com/users/157701/andras-zoltan) specifically for his answer to [this stackoverflow question](http://stackoverflow.com/questions/3021613/how-to-pre-load-all-deployed-assemblies-for-an-appdomain)
 * I'm sure there are others that I can't remember at this time
 
@@ -76,8 +76,10 @@ It is as simple as this:
 * Implement IRESTable on the items that you want to expose via REST
 * Add [DataContract(Namespace = "")] to your classes that implement IRESTable
 * Add [DataMember] to members that you want exposed via REST
-* Implement IRepositoryTypeMap.  The class that implements IRepositoryTypeMap is responsible for mapping REST requests to the code that will process the request
-	* Note that IRepositoryTypeMap may soon be renamed to ITypeToUnitOfWorkMap, as UnitOfWork is more generic than Repository.  
+* Implement IRepositoryTypeMap.  The class that implements IRepositoryTypeMap 
+  is responsible for mapping REST requests to the code that will process the request
+	* Note that IRepositoryTypeMap may soon be renamed to ITypeToUnitOfWorkMap, 
+	  as UnitOfWork is more generic than Repository.  
 * Add the following code to your Global application class (similar but slightly different for MVC projects):
 
 		protected void Application_Start()
@@ -90,5 +92,40 @@ It is as simple as this:
 
             entityRoutePopulator.RegisterRoutes();
         }
+* Add the following to your web.config
+
+	<system.serviceModel>
+		<behaviors>
+			<serviceBehaviors>
+				<behavior>
+					<serviceMetadata httpGetEnabled="true"/>
+					<!-- you may want includeExceptionDetailInFaults="false" depending on environment -->
+					<serviceDebug includeExceptionDetailInFaults="true"/> 
+				</behavior>
+			</serviceBehaviors>
+		</behaviors>
+		<serviceHostingEnvironment aspNetCompatibilityEnabled="true"/>
+		<standardEndpoints>
+			<webHttpEndpoint>
+				<standardEndpoint name="" helpEnabled="true" automaticFormatSelectionEnabled="true"/>
+			</webHttpEndpoint>
+		</standardEndpoints>
+	</system.serviceModel>
 		
-		
+## BEST PRACTICES	
+
+1. Hide private information.  The objects exposed via your REST API should not be analogous 
+   to your internal object model, persistence model, or any other internal model.
+	* This is why the Restable class in the sample website lives in Model.Domain.  
+	  Persistence models would live in Model.Persistence.  
+	  Do what makes sense for your project, but make sure you only expose information that you want to expose.
+	* Having no dependency between your REST API and the rest of your system allows you to change your system but leave your REST API intact.
+2. Layer Appropriately.  It is appropriate for the sample to have all components in one project, 
+   as the sample is meant to be as simple as possible.  If, for example, your project has Models 
+   that implement IRESTable in a seperate dll, you could update your REST API by just copying the new dll into the bin and resetting IIS
+   
+## TODO / PENDING
+
+* Decide if it is worth updating routes on each request.  Microsoft says this is not a best practice.  I can't find the link right this minute.
+* Due to current WCF implementation, resource identifiers have to strings, ala, IService<T>.Read(string id)
+	* One day WCF may support int / long etc here.  What do we do then?  Anything?
