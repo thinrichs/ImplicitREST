@@ -35,11 +35,10 @@ It is as simple as this:
             entityRoutePopulator.RegisterRoutes();
         }
 
-
-
 ## SAMPLE IMPLEMENTATION
 
 The sample implementation is the simplest thing that will work.  It does not follow the best practices.  Best Practices are laid out below this section.
+This and subsequent sections will assume the base URL for the sample is http://localhost/HowToConsumeAutoREST
 To test the sample implementation perform the following:
 
 		POST to http://localhost/HowToConsumeAutoREST/RESTable/Create with an empty JSON payload like {} 
@@ -65,3 +64,15 @@ The RESTable type is exposed for access according to this interface:
 			[OperationContract]
 			void Delete(string id);
 		}
+		
+WCF gives you a help page for each type also.  The URL looks like this http://localhost/HowToConsumeAutoREST/Restable/help:
+		
+		Operations at http://localhost/HowToConsumeAutoREST/Restable
+		This page describes the service operations at this endpoint.
+
+		Uri		Method	Description
+		{id}	GET		Service at http://localhost/HowToConsumeAutoREST/Restable/{ID}
+				DELETE	Service at http://localhost/HowToConsumeAutoREST/Restable/{ID}
+		Create	POST	Service at http://localhost/HowToConsumeAutoREST/Restable/Create
+		Update	PUT		Service at http://localhost/HowToConsumeAutoREST/Restable/Update
+		
