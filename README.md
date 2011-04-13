@@ -45,7 +45,7 @@ The RESTable type is exposed for access according to this interface:
 			void Delete(string id);
 		}
 		
-WCF gives you a help page for each type also.  The URL looks like this http://localhost/HowToConsumeAutoREST/Restable/help:
+WCF gives you a help page for each type also.  The URL looks like this http://localhost/HowToConsumeAutoREST/Restable/help
 		
 		Operations at http://localhost/HowToConsumeAutoREST/Restable
 		This page describes the service operations at this endpoint.
