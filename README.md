@@ -92,25 +92,25 @@ It is as simple as this:
 
             entityRoutePopulator.RegisterRoutes();
         }
-* Add the following to your web.config
+* Add the following to your web.config:
 		
-	<system.serviceModel>
-		<behaviors>
-			<serviceBehaviors>
-				<behavior>
-					<serviceMetadata httpGetEnabled="true"/>
-					<!-- you may want includeExceptionDetailInFaults="false" depending on environment -->
-					<serviceDebug includeExceptionDetailInFaults="true"/> 
-				</behavior>
-			</serviceBehaviors>
-		</behaviors>
-		<serviceHostingEnvironment aspNetCompatibilityEnabled="true"/>
-		<standardEndpoints>
-			<webHttpEndpoint>
-				<standardEndpoint name="" helpEnabled="true" automaticFormatSelectionEnabled="true"/>
-			</webHttpEndpoint>
-		</standardEndpoints>
-	</system.serviceModel>
+		<system.serviceModel>
+			<behaviors>
+				<serviceBehaviors>
+					<behavior>
+						<serviceMetadata httpGetEnabled="true"/>
+						<!-- you may want includeExceptionDetailInFaults="false" depending on environment -->
+						<serviceDebug includeExceptionDetailInFaults="true"/> 
+					</behavior>
+				</serviceBehaviors>
+			</behaviors>
+			<serviceHostingEnvironment aspNetCompatibilityEnabled="true"/>
+			<standardEndpoints>
+				<webHttpEndpoint>
+					<standardEndpoint name="" helpEnabled="true" automaticFormatSelectionEnabled="true"/>
+				</webHttpEndpoint>
+			</standardEndpoints>
+		</system.serviceModel>
 		
 ## BEST PRACTICES	
 
