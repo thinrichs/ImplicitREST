@@ -49,6 +49,7 @@ This should result a response with a JSON body similar to:
 		{"APIkey":"1K4q7f9HAEO3cXs6idYYgg=="}
 		
 The RESTable type is exposed for access according to this interface:
+
 		[ServiceContract]
 		public interface IService<T> where T : IRESTable
 		{
