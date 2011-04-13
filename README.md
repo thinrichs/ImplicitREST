@@ -5,13 +5,23 @@ AutoREST -- A .NET WCF based REST engine
 
 AutoREST is a .NET 4 WCF based REST engine that supports both JSON and XML.
 
+AutoREST has a few requirements:
+* AspNetCompatibilityRequirementsMode has to be set to allowed.  
+	* This can be done in configuration with this node
+	
+			<serviceHostingEnvironment aspNetCompatibilityEnabled="true"/>
+			
+	* Automatic format selection and automatic help requires the following configuration:
+	
+	<webHttpEndpoint>
+        <standardEndpoint name="" helpEnabled="true" automaticFormatSelectionEnabled="true"/>
+    </webHttpEndpoint>
 AutoREST is built on the shoulders of giants, such as:
 
 * [Steve Michelotti](http://geekswithblogs.net/michelotti/archive/2010/08/21/restful-wcf-services-with-no-svc-file-and-no-config.aspx)
 * [StackOverflow](http://www.stackoverflow.com)
 * [Andras Zoltan](http://stackoverflow.com/users/157701/andras-zoltan) specifically for his answer to [this stackoverflow question](http://stackoverflow.com/questions/3021613/how-to-pre-load-all-deployed-assemblies-for-an-appdomain)
 * I'm sure there are others that I can't remember at this time
-
 
 There is a sample project called HowToConsumeAutoREST that shows... wait for it... How to Consume AutoREST.
 
