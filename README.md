@@ -67,48 +67,7 @@ WCF gives you a help page for each type also.  The URL looks like this http://lo
 				DELETE	Service at http://localhost/HowToConsumeAutoREST/Restable/{ID}
 		Create	POST	Service at http://localhost/HowToConsumeAutoREST/Restable/Create
 		Update	PUT		Service at http://localhost/HowToConsumeAutoREST/Restable/Update
-		
-## SAMPLE IMPLEMENTATION
-
-The sample implementation is the simplest thing that will work.  It does not follow the best practices.  Best Practices are laid out below this section.
-This and subsequent sections will assume the base URL for the sample is http://localhost/HowToConsumeAutoREST
-To test the sample implementation perform the following:
-
-		POST to http://localhost/HowToConsumeAutoREST/RESTable/Create with an empty JSON payload like {} 
-		
-This should result a response with a JSON body similar to:
-
-		{"APIkey":"1K4q7f9HAEO3cXs6idYYgg=="}
-		
-The RESTable type is exposed for access according to this interface:
-
-		[ServiceContract]
-		public interface IService<T> where T : IRESTable
-		{
-			[OperationContract]
-			T Create(T payload);
-
-			[OperationContract]
-			T Read(string id);
-
-			[OperationContract]
-			T Update(T payload);
-
-			[OperationContract]
-			void Delete(string id);
-		}
-		
-WCF gives you a help page for each type also.  The URL looks like this http://localhost/HowToConsumeAutoREST/Restable/help:
-		
-		Operations at http://localhost/HowToConsumeAutoREST/Restable
-		This page describes the service operations at this endpoint.
-
-		Uri		Method	Description
-		{id}	GET		Service at http://localhost/HowToConsumeAutoREST/Restable/{ID}
-				DELETE	Service at http://localhost/HowToConsumeAutoREST/Restable/{ID}
-		Create	POST	Service at http://localhost/HowToConsumeAutoREST/Restable/Create
-		Update	PUT		Service at http://localhost/HowToConsumeAutoREST/Restable/Update
-		
+				
 ## IMPLEMENTATION STEPS
 
 It is as simple as this:
