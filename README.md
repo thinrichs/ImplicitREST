@@ -16,6 +16,7 @@ AutoREST has a few requirements:
 	<webHttpEndpoint>
         <standardEndpoint name="" helpEnabled="true" automaticFormatSelectionEnabled="true"/>
     </webHttpEndpoint>
+	
 AutoREST is built on the shoulders of giants, such as:
 
 * [Steve Michelotti](http://geekswithblogs.net/michelotti/archive/2010/08/21/restful-wcf-services-with-no-svc-file-and-no-config.aspx)
