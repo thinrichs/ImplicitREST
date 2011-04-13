@@ -41,7 +41,9 @@ It is as simple as this:
 
 The sample implementation is the simplest thing that will work.  It does not follow the best practices.  Best Practices are laid out below this section.
 To test the sample implementation perform the following:
+
 		POST to http://localhost/HowToConsumeAutoREST/RESTable/Create with an empty JSON payload like {} 
+		
 This should result a response with a JSON body similar to:
 
 		{"APIkey":"1K4q7f9HAEO3cXs6idYYgg=="}
