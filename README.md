@@ -129,4 +129,4 @@ It is as simple as this:
 
 * Decide if it is worth updating routes on each request.  Microsoft says this is not a best practice.  I can't find the link right this minute.
 * Due to current WCF implementation, resource identifiers have to strings, ala, IService<T>.Read(string id)
-	* One day WCF may support int / long etc here.  What do we do then?  Anything?
+	* The [latest WCF contrib bits](http://wcf.codeplex.com/releases/view/64449) now support primitive types instead of just strings.  Should I add a dependency and support this?
