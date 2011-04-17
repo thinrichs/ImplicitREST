@@ -21,10 +21,10 @@ AutoREST has a few requirements:
 	
 AutoREST is built on the shoulders of giants, such as:
 
+* [Glenn Block for increasing WCF innovation by an order of magnitiude](http://blogs.msdn.com/b/gblock/)
 * [Steve Michelotti](http://geekswithblogs.net/michelotti/archive/2010/08/21/restful-wcf-services-with-no-svc-file-and-no-config.aspx)
 * [StackOverflow in General](http://www.stackoverflow.com)
 * [Andras Zoltan](http://stackoverflow.com/users/157701/andras-zoltan) specifically for his answer to [this stackoverflow question](http://stackoverflow.com/questions/3021613/how-to-pre-load-all-deployed-assemblies-for-an-appdomain)
-* I'm sure there are others that I can't remember at this time
 
 There is a sample project called HowToConsumeAutoREST that shows... wait for it... How to Consume AutoREST.
 
