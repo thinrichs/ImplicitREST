@@ -74,9 +74,15 @@ WCF gives you a help page for each type also.  The URL looks like this http://lo
 It is as simple as this:
 
 * Add a reference to the AutoREST project
-* Implement IRESTable on the items that you want to expose via REST
-* Add [DataContract(Namespace = "")] to your classes that implement IRESTable
-* Add [DataMember] to members that you want exposed via REST
+* Implement IRESTable on the items that you want to expose via REST, such as below.  Tag the class with DataContract, data payload elements with DataMember
+
+		[DataContract(Namespace = "")]
+		public class Restable : IRESTable
+		{       
+			[DataMember]
+			public string APIkey { get; set; }       
+		}
+
 * Implement IRepositoryTypeMap.  The class that implements IRepositoryTypeMap 
   is responsible for mapping REST requests to the code that will process the request
 	* Note that IRepositoryTypeMap may soon be renamed to ITypeToUnitOfWorkMap, 
