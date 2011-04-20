@@ -21,10 +21,10 @@ AutoREST has a few requirements:
 	
 AutoREST is built on the shoulders of giants, such as:
 
-* [Steve Michelotti](http://geekswithblogs.net/michelotti/archive/2010/08/21/restful-wcf-services-with-no-svc-file-and-no-config.aspx)
+* [Glenn Block for increasing WCF innovation by an order of magnitiude](http://blogs.msdn.com/b/gblock/)
+* [Steve Michelotti for this blog entry that showed the way](http://geekswithblogs.net/michelotti/archive/2010/08/21/restful-wcf-services-with-no-svc-file-and-no-config.aspx)
 * [StackOverflow in General](http://www.stackoverflow.com)
 * [Andras Zoltan](http://stackoverflow.com/users/157701/andras-zoltan) specifically for his answer to [this stackoverflow question](http://stackoverflow.com/questions/3021613/how-to-pre-load-all-deployed-assemblies-for-an-appdomain)
-* I'm sure there are others that I can't remember at this time
 
 There is a sample project called HowToConsumeAutoREST that shows... wait for it... How to Consume AutoREST.
 
@@ -135,4 +135,4 @@ It is as simple as this:
 
 * Decide if it is worth updating routes on each request.  Microsoft says this is not a best practice.  I can't find the link right this minute.
 * Due to current WCF implementation, resource identifiers have to strings, ala, IService<T>.Read(string id)
-	* One day WCF may support int / long etc here.  What do we do then?  Anything?
+	* The [latest WCF contrib bits](http://wcf.codeplex.com/releases/view/64449) now support primitive types instead of just strings.  Should I add a dependency and support this?
