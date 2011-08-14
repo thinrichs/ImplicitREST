@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{98846192-8E08-4FB6-84CD-5911DA7BEF69}</ProjectGuid>
+    <ProjectGuid>{8707FAC3-21F4-409A-8A8D-622925AA92B3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AutoREST</RootNamespace>
-    <AssemblyName>AutoREST</AssemblyName>
+    <RootNamespace>RESTModels</RootNamespace>
+    <AssemblyName>RESTModels</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,28 +31,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.ServiceModel" />
-    <Reference Include="System.ServiceModel.Activation" />
-    <Reference Include="System.ServiceModel.Web" />
-    <Reference Include="System.Web" />
+    <Reference Include="System.Runtime.Serialization" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DLLLoader.cs" />
-    <Compile Include="EntityRouteRegistrar.cs" />
-    <Compile Include="EntityToEntityFuncMap.cs" />
-    <Compile Include="HttpVerb.cs" />
-    <Compile Include="IRESTable.cs" />
-    <Compile Include="IVerbToTypeMap.cs" />
-    <Compile Include="IService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository.cs" />
-    <Compile Include="RESTVerb.cs" />
-    <Compile Include="RouteNameAttribute.cs" />
-    <Compile Include="Service.cs" />
-    <Compile Include="StringToEntityFuncMap.cs" />
-    <Compile Include="VerbToRequestMethod.cs" />
+    <Compile Include="Sample.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AutoREST\AutoREST.csproj">
+      <Project>{98846192-8E08-4FB6-84CD-5911DA7BEF69}</Project>
+      <Name>AutoREST</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

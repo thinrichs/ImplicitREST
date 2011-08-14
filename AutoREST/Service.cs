@@ -7,18 +7,18 @@ namespace AutoREST
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     public class Service<T> : IService<T> where T : class, IRESTable
     {
-        public static IRepositoryTypeMap RepositoryTypeMap { private get; set; }
+        public static IVerbToTypeMap VerbTypeMap { private get; set; }
 
         private readonly Repository<T> _repository;
 
         public Service()
         {
-            _repository = new Repository<T>(RepositoryTypeMap);
+            _repository = new Repository<T>(VerbTypeMap);
         }
 
         #region IService<T> Members
 
-        [WebInvoke(Method = "POST")]
+        [WebInvoke(Method = HttpVerb.Post)]
         public T Create(T payload)
         {
             if (payload == null) return null;
@@ -27,7 +27,7 @@ namespace AutoREST
             return result;
         }
 
-        [WebGet(UriTemplate = "{id}")]
+        [WebInvoke(Method = HttpVerb.Get, UriTemplate = "{id}")]
         public T Read(string id)
         {
             if (string.IsNullOrEmpty(id)) return null;
@@ -36,7 +36,7 @@ namespace AutoREST
             return result;
         }
 
-        [WebInvoke(Method = "PUT")]
+        [WebInvoke(Method = HttpVerb.Put)]
         public T Update(T payload)
         {
             if (payload == null) return null;
@@ -45,7 +45,7 @@ namespace AutoREST
             return result;
         }
 
-        [WebInvoke(UriTemplate = "{id}", Method = "DELETE")]
+        [WebInvoke(Method = HttpVerb.Delete,UriTemplate = "{id}")]
         public void Delete(string id)
         {
             if (string.IsNullOrEmpty(id)) return;

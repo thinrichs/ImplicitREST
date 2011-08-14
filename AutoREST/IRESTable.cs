@@ -2,6 +2,6 @@
 {
     public interface IRESTable
     {
-        string APIkey { get; }
+        string ApiKey { get; }
     }
 }
