@@ -1,5 +1,8 @@
 AutoREST -- A .NET WCF based REST engine
 ====================================
+## LICENSE
+
+AutoREST is published under the [WTF Software License](http://en.wikipedia.org/wiki/WTFPL).  Do what you like, but a shoutout would be appreciated.
 
 ## DESCRIPTION
 
