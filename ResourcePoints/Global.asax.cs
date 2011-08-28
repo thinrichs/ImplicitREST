@@ -10,7 +10,7 @@ namespace ResourcePoints
     {
         protected void Application_Start()
         {
-            var entityRoutePopulator = new EntityRouteRegistrar
+            var entityRoutePopulator = new EntityRouteRegistrar<IWantRESTExposure>
             {
                 Routes = RouteTable.Routes,
                 TypeMap = new VerbToTypeMapper()

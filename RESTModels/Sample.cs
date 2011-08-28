@@ -8,7 +8,7 @@ namespace RESTModels
     /// </summary>
     [DataContract(Namespace = "")]
     [RouteName(Name = "SampleResource")]
-    public class Sample : IRESTable
+    public class Sample : IWantRESTExposure
     {
         #region Implementation of IRESTable
         /// <summary>

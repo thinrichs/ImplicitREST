@@ -6,7 +6,7 @@ using System.Web.Routing;
 
 namespace AutoREST
 {
-    public class EntityRouteRegistrar
+    public class EntityRouteRegistrar<ToRoute> where ToRoute : class
     {
         public RouteCollection Routes { get; set; }
 
@@ -34,7 +34,7 @@ namespace AutoREST
                 .ToList();
             // filter to types implementing IRESTable
             var restableTypes = types
-                .Where(t => t.GetInterface("IRESTable") != null)
+                .Where(t => t as ToRoute != null)
                 .ToList();
             // add route for each type
             restableTypes.ForEach(AddRouteForType);

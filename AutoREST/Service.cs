@@ -5,7 +5,7 @@ using System.ServiceModel.Web;
 namespace AutoREST
 {
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
-    public class Service<T> : IService<T> where T : class, IRESTable
+    public class Service<T> : IService<T> where T : class, IWantRESTExposure
     {
         public static IVerbToTypeMap VerbTypeMap { private get; set; }
 

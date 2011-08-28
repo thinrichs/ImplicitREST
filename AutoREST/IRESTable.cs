@@ -1,6 +1,6 @@
 ﻿namespace AutoREST
 {
-    public interface IRESTable
+    public interface IWantRESTExposure
     {
         string ApiKey { get; }
     }

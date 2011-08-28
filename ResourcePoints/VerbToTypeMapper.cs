@@ -7,11 +7,11 @@ namespace ResourcePoints
     {
         #region Implementation of IVerbToTypeMap
 
-        public EntityToEntityFuncMap CreateTypeMap
+        public EntityFuncMap<IWantRESTExposure> CreateTypeMap
         {
             get // type -> unit of create work
             {
-                return new EntityToEntityFuncMap
+                return new EntityFuncMap<IWantRESTExposure>
                             {/*General Idea here is 
                               *{ TypeToPerformUnitOfWorkOn,  LamdaSpecifyingUnitOfWork } */  
                                { typeof(Sample), r => { return new SampleRepository().Create(); }}
@@ -19,19 +19,19 @@ namespace ResourcePoints
             }
         }
 
-        public EntityToEntityFuncMap UpdateTypeMap
+        public EntityFuncMap<IWantRESTExposure> UpdateTypeMap
         {   // type -> unit of update work
-            get { return new EntityToEntityFuncMap(); }
+            get { return new EntityFuncMap<IWantRESTExposure>(); }
         }
 
-        public StringToEntityFuncMap RetrieveTypeMap
+        public EntityFuncMap<string> RetrieveTypeMap
         {  // type -> unit of retrieval work
-            get { return new StringToEntityFuncMap(); }
+            get { return new EntityFuncMap<string>(); }
         }
 
-        public StringToEntityFuncMap DeleteTypeMap
+        public EntityFuncMap<string> DeleteTypeMap
         {   // type -> unit of delete work
-            get { return new StringToEntityFuncMap(); }
+            get { return new EntityFuncMap<string>(); }
         }
 
         #endregion

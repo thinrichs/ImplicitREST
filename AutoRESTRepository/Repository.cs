@@ -31,7 +31,8 @@ namespace AutoRESTRepository
        
         private static string RESTUrl(object param)
         {
-            return String.Format("{0}/{1}/{2}", BaseRestUri, EntityRouteRegistrar.RouteTokenOfType(typeof(T)), param);
+            var routeToken = EntityRouteRegistrar<IWantRESTExposure>.RouteTokenOfType(typeof (T));
+            return String.Format("{0}/{1}/{2}", BaseRestUri, routeToken, param);
         }
 
         public T Create(T item)

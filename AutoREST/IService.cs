@@ -5,7 +5,7 @@ using System.ServiceModel;
 namespace AutoREST
 {
     [ServiceContract]
-    public interface IService<T> where T : IRESTable
+    public interface IService<T> where T : IWantRESTExposure
     {
         [OperationContract]
         T Create(T payload);

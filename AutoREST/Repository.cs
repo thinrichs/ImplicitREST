@@ -1,6 +1,6 @@
 ﻿namespace AutoREST
 {
-    class Repository<T> where T : class, IRESTable
+    class Repository<T> where T : class, IWantRESTExposure
     {
         private readonly IVerbToTypeMap _typeMap;
         public Repository(IVerbToTypeMap typeMap)
