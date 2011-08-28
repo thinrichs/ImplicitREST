@@ -3,5 +3,5 @@ using System.Collections.Generic;
 
 namespace AutoREST
 {
-    public class EntityToEntityFuncMap : Dictionary<Type, Func<IRESTable, IRESTable>> { }
+    public class EntityFuncMap<TResult> : Dictionary<Type, Func<TResult, IRESTable>> { }
 }
