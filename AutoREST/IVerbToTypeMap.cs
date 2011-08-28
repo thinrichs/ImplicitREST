@@ -2,9 +2,9 @@
 {
     public interface IVerbToTypeMap
     {
-        EntityToEntityFuncMap CreateTypeMap   { get; }
-        EntityToEntityFuncMap UpdateTypeMap   { get; }
-        StringToEntityFuncMap RetrieveTypeMap { get; }
-        StringToEntityFuncMap DeleteTypeMap   { get; }
+        EntityFuncMap<IRESTable> CreateTypeMap   { get; }
+        EntityFuncMap<IRESTable> UpdateTypeMap { get; }
+        EntityFuncMap<string> RetrieveTypeMap { get; }
+        EntityFuncMap<string> DeleteTypeMap   { get; }
     }
 }
