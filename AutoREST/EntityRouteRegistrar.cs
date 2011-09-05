@@ -32,12 +32,13 @@ namespace AutoREST
                     }
                 })
                 .ToList();
+            var typeToFind = typeof (ToRoute).Name;
             // filter to types implementing IRESTable
             var restableTypes = types
-                .Where(t => t as ToRoute != null)
+                .Where(t => t.GetInterface(typeToFind) != null)
                 .ToList();
             // add route for each type
-            restableTypes.ForEach(AddRouteForType);
+            restableTypes.ForEach(AddRouteForType);            
         }
 
         private void AddRouteForType(Type needsToBeRouted)
