@@ -3,21 +3,18 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Text;
-using System.Web.Script.Serialization;
 using AutoREST;
-
+using Newtonsoft.Json;
 namespace AutoRESTRepository
 {
     public class JSONBasedRESTProcessor<TType, TKey> where TType : class
     {
         private static Dictionary<RESTVerb, Func<TKey, string>> _verbToUrlMapping;
-        private static readonly JavaScriptSerializer Serializer = new JavaScriptSerializer();
-
         /// <summary>
         /// For the given generic type, proxies requests over to an AutoREST implemented REST resource point
         /// </summary>
         /// <param name="verbToUrlMapping"></param>
-       public JSONBasedRESTProcessor(Dictionary<RESTVerb, Func<TKey, string>> verbToUrlMapping)
+        public JSONBasedRESTProcessor(Dictionary<RESTVerb, Func<TKey, string>> verbToUrlMapping)
         {
             _verbToUrlMapping = verbToUrlMapping;
         }
@@ -44,7 +41,7 @@ namespace AutoRESTRepository
         public static void AddItemToRequest(TType item, WebRequest request)
         {
             if (item == null) return;
-            var json = Serializer.Serialize(item);
+            var json = JsonConvert.SerializeObject(item);
             var byteData = Encoding.UTF8.GetBytes(json);
             request.ContentLength = byteData.Length;
 
@@ -54,7 +51,7 @@ namespace AutoRESTRepository
                 postStream.Write(byteData, 0, byteData.Length);
             }
         }
-       
+
         /// <summary>
         /// 
         /// </summary>
@@ -73,7 +70,7 @@ namespace AutoRESTRepository
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public static TType SendRequest(WebRequest request) 
+        public static TType SendRequest(WebRequest request)
         {
             try
             {
@@ -81,11 +78,7 @@ namespace AutoRESTRepository
                 using (var reader = new StreamReader(response.GetResponseStream()))
                 {
                     var resultingJson = reader.ReadToEnd();
-                    var resultingItem = Serializer.Deserialize<TType>(resultingJson);
-                    if (resultingItem == null)
-                    {
-                        throw new ArgumentNullException("collection");
-                    }
+                    var resultingItem = JsonConvert.DeserializeObject<TType>(resultingJson);
                     return resultingItem;
                 }
             }
