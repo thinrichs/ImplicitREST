@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Text;
+using System.Web.Script.Serialization;
 using AutoREST;
-using Newtonsoft.Json;
 namespace AutoRESTRepository
 {
     public class JSONBasedRESTProcessor<TType, TKey> where TType : class
     {
         private static Dictionary<RESTVerb, Func<TKey, string>> _verbToUrlMapping;
+        private static JavaScriptSerializer _serializer = new JavaScriptSerializer(); // was using JSON.NET, but was getting wierd
+        // exceptions related to security.
+        // see http://stackoverflow.com/questions/5511171/json-net-says-operation-may-destabilize-the-runtime-under-net-4-but-not-under
         /// <summary>
         /// For the given generic type, proxies requests over to an AutoREST implemented REST resource point
         /// </summary>
@@ -41,7 +44,7 @@ namespace AutoRESTRepository
         public static void AddItemToRequest(TType item, WebRequest request)
         {
             if (item == null) return;
-            var json = JsonConvert.SerializeObject(item);
+            var json = _serializer.Serialize(item);
             var byteData = Encoding.UTF8.GetBytes(json);
             request.ContentLength = byteData.Length;
 
@@ -78,7 +81,7 @@ namespace AutoRESTRepository
                 using (var reader = new StreamReader(response.GetResponseStream()))
                 {
                     var resultingJson = reader.ReadToEnd();
-                    var resultingItem = JsonConvert.DeserializeObject<TType>(resultingJson);
+                    var resultingItem = _serializer.Deserialize<TType>(resultingJson);
                     return resultingItem;
                 }
             }
