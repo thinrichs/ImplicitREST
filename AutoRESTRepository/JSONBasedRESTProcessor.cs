@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Text;
+using System.Web.Script.Serialization;
 using AutoREST;
 
 public class JSONBasedRESTProcessor<TType, TKey> where TType : class
 {
     private static Dictionary<RESTVerb, Func<TKey, string>> _verbToUrlMapping;
+    private static readonly JavaScriptSerializer Serializer = new JavaScriptSerializer();
 
     /// <summary>
     /// For the given generic type, proxies requests over to an AutoREST implemented REST resource point
     /// </summary>
     /// <param name="verbToUrlMapping"></param>
-    /// <param name="verbToRequestMethodMapping"></param>
+    /// <param name="verbToUrlMapping"></param>
     public JSONBasedRESTProcessor(Dictionary<RESTVerb, Func<TKey, string>> verbToUrlMapping)
     {
         _verbToUrlMapping = verbToUrlMapping;
@@ -41,7 +43,7 @@ public class JSONBasedRESTProcessor<TType, TKey> where TType : class
     public static void AddItemToRequest(TType item, WebRequest request)
     {
         if (item == null) return;
-        var json = JSONSerializer.Serialize(item);
+        var json = Serializer.Serialize(item);
         var byteData = Encoding.UTF8.GetBytes(json);
         request.ContentLength = byteData.Length;
 
@@ -78,7 +80,7 @@ public class JSONBasedRESTProcessor<TType, TKey> where TType : class
             using (var reader = new StreamReader(response.GetResponseStream()))
             {
                 var resultingJson = reader.ReadToEnd();
-                var resultingItem = JSONSerializer.Deserialize<TType>(resultingJson);
+                var resultingItem = Serializer.Deserialize<TType>(resultingJson);
                 if (resultingItem == null)
                 {
                     throw new ArgumentNullException("collection");

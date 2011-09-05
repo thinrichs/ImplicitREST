@@ -11,7 +11,7 @@ namespace AutoRESTRepository
     /// </summary>
     /// <typeparam name="TKey"></typeparam>
     /// <typeparam name="TType"></typeparam>
-    public class Repository<TType, TKey> where TType : class, IWantRESTExposure
+    public class Repository<TType, TKey> : IRepository<TType, TKey> where TType : class, IWantRESTExposure
     {
         // Architecture issue here.  Repository should know nothing about persistence, etc, but currently need to give RestURI.  What to do?  
         public static string BaseRestUri { private get; set; }

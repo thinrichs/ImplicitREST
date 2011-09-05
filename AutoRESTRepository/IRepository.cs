@@ -2,7 +2,7 @@ using AutoREST;
 
 namespace AutoRESTRepository
 {
-    public interface IRepository<TType, TKey> where TType : class, IWantRESTExposure
+    public interface IRepository<TType, in TKey> where TType : class, IWantRESTExposure
     {
         TType Create(TType item);
         TType GetById(TKey id);
