@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Web;
 using AutoREST;
-using System.Text;
 
 namespace AutoRESTRepository
 {
