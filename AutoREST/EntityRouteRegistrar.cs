@@ -38,7 +38,7 @@ namespace AutoREST
                 .Where(t => t.GetInterface(typeToFind) != null)
                 .ToList();
             // add route for each type
-            restableTypes.ForEach(AddRouteForType);
+            restableTypes.ForEach(AddRouteForType);            
         }
 
         private void AddRouteForType(Type needsToBeRouted)
