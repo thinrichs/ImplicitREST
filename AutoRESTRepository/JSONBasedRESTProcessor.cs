@@ -5,16 +5,16 @@ using System.Net;
 using System.Text;
 using AutoREST;
 
-public class JSONBasedRESTProcessor<T> where T : class
+public class JSONBasedRESTProcessor<TType, TKey> where TType : class
 {
-    private static Dictionary<RESTVerb, Func<int, string>> _verbToUrlMapping;
+    private static Dictionary<RESTVerb, Func<TKey, string>> _verbToUrlMapping;
 
     /// <summary>
     /// For the given generic type, proxies requests over to an AutoREST implemented REST resource point
     /// </summary>
     /// <param name="verbToUrlMapping"></param>
     /// <param name="verbToRequestMethodMapping"></param>
-    public JSONBasedRESTProcessor(Dictionary<RESTVerb, Func<int, string>> verbToUrlMapping)
+    public JSONBasedRESTProcessor(Dictionary<RESTVerb, Func<TKey, string>> verbToUrlMapping)
     {
         _verbToUrlMapping = verbToUrlMapping;
     }
@@ -24,7 +24,7 @@ public class JSONBasedRESTProcessor<T> where T : class
     /// <param name="verb"></param>
     /// <param name="id"></param>
     /// <returns></returns>
-    private static WebRequest GetWebRequest(RESTVerb verb, int id)
+    private static WebRequest GetWebRequest(RESTVerb verb, TKey id)
     {
         // setup request    
         var url = _verbToUrlMapping[verb](id);
@@ -38,7 +38,7 @@ public class JSONBasedRESTProcessor<T> where T : class
     /// </summary>
     /// <param name="item"></param>
     /// <param name="request"></param>
-    public static void AddItemToRequest(T item, WebRequest request)
+    public static void AddItemToRequest(TType item, WebRequest request)
     {
         if (item == null) return;
         var json = JSONSerializer.Serialize(item);
@@ -70,7 +70,7 @@ public class JSONBasedRESTProcessor<T> where T : class
     /// </summary>
     /// <param name="request"></param>
     /// <returns></returns>
-    public static T SendRequest(WebRequest request) 
+    public static TType SendRequest(WebRequest request) 
     {
         try
         {
@@ -78,7 +78,7 @@ public class JSONBasedRESTProcessor<T> where T : class
             using (var reader = new StreamReader(response.GetResponseStream()))
             {
                 var resultingJson = reader.ReadToEnd();
-                var resultingItem = JSONSerializer.Deserialize<T>(resultingJson);
+                var resultingItem = JSONSerializer.Deserialize<TType>(resultingJson);
                 if (resultingItem == null)
                 {
                     throw new ArgumentNullException("collection");
@@ -105,7 +105,7 @@ public class JSONBasedRESTProcessor<T> where T : class
     /// <param name="item"></param>
     /// <param name="id"></param>
     /// <returns></returns>
-    public T ProcessItem(RESTVerb verb, T item, int id = int.MinValue)
+    public TType ProcessItem(RESTVerb verb, TType item, TKey id)
     {
         var request = GetWebRequest(verb, id);
         AddItemToRequest(item, request);

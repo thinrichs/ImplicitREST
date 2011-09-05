@@ -41,7 +41,7 @@
   <ItemGroup>
     <Compile Include="DLLLoader.cs" />
     <Compile Include="EntityRouteRegistrar.cs" />
-    <Compile Include="EntityToEntityFuncMap.cs" />
+    <Compile Include="EntityFuncMap.cs" />
     <Compile Include="HttpVerb.cs" />
     <Compile Include="IRESTable.cs" />
     <Compile Include="IVerbToTypeMap.cs" />
@@ -51,7 +51,6 @@
     <Compile Include="RESTVerb.cs" />
     <Compile Include="RouteNameAttribute.cs" />
     <Compile Include="Service.cs" />
-    <Compile Include="StringToEntityFuncMap.cs" />
     <Compile Include="VerbToRequestMethod.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

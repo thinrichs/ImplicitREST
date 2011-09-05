@@ -11,7 +11,7 @@ namespace SampleUI.Controllers
          // repositories shouldn't need context, because consumers shouldn't know / care that the repository needs a base REST url.
         // but I also don't want the generic repository class dependent on on settings / properties.
         // is DI (Dependency Injection) the solution here?
-        private static readonly Repository<Sample> Repository = new Repository<Sample>(Settings.Default.BaseRestURI);
+        private static readonly Repository<Sample, int> Repository = new Repository<Sample, int>(Settings.Default.BaseRestURI);
 
         //
         // GET: /Sample/

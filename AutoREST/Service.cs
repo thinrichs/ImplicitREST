@@ -18,7 +18,7 @@ namespace AutoREST
 
         #region IService<T> Members
 
-        [WebInvoke(Method = HttpVerb.Post)]
+        [WebInvoke(Method = HttpVerb.Post, UriTemplate = "Create/")]
         public T Create(T payload)
         {
             if (payload == null) return null;
@@ -27,7 +27,7 @@ namespace AutoREST
             return result;
         }
 
-        [WebInvoke(Method = HttpVerb.Get, UriTemplate = "{id}")]
+        [WebInvoke(Method = HttpVerb.Get, UriTemplate = "{id}/")]
         public T Read(string id)
         {
             if (string.IsNullOrEmpty(id)) return null;
@@ -36,7 +36,7 @@ namespace AutoREST
             return result;
         }
 
-        [WebInvoke(Method = HttpVerb.Put)]
+        [WebInvoke(Method = HttpVerb.Put, UriTemplate = "Update/")]
         public T Update(T payload)
         {
             if (payload == null) return null;
@@ -45,7 +45,7 @@ namespace AutoREST
             return result;
         }
 
-        [WebInvoke(Method = HttpVerb.Delete,UriTemplate = "{id}")]
+        [WebInvoke(Method = HttpVerb.Delete,UriTemplate = "{id}/")]
         public void Delete(string id)
         {
             if (string.IsNullOrEmpty(id)) return;

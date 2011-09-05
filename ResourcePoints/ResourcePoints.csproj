@@ -81,7 +81,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>3353</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/ResourcePoints</IISUrl>
+          <IISUrl>http://localhost/AutoRESTResourcePoints</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
