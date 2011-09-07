@@ -88,12 +88,14 @@ namespace AutoRESTRepository
             catch (WebException ex)
             {
                 var webResponse = (HttpWebResponse)ex.Response;
-                // nothing to get so return null;
                 if (webResponse.StatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                throw;
+                var stream = webResponse.GetResponseStream();
+                var reader = new StreamReader(stream);
+                var content = reader.ReadToEnd();
+                throw new WebException(ex.Message + Environment.NewLine + content, ex, ex.Status, ex.Response);
             }
         }
 
