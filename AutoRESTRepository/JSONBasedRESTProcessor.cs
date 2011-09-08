@@ -91,10 +91,6 @@ namespace AutoRESTRepository
                 using (var stream = webResponse.GetResponseStream())
                 using (var reader = new StreamReader(stream))
                 {
-                    if (webResponse.StatusCode == HttpStatusCode.NotFound)
-                    {
-                        return null;
-                    }
                     var content = reader.ReadToEnd();
                     throw new WebException(ex.Message + Environment.NewLine + content, ex, ex.Status, ex.Response);
                 }
