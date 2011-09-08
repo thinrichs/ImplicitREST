@@ -87,15 +87,17 @@ namespace AutoRESTRepository
             }
             catch (WebException ex)
             {
-                var webResponse = (HttpWebResponse)ex.Response;
-                if (webResponse.StatusCode == HttpStatusCode.NotFound)
+                using (var webResponse = (HttpWebResponse)ex.Response)
+                using (var stream = webResponse.GetResponseStream())
+                using (var reader = new StreamReader(stream))
                 {
-                    return null;
+                    if (webResponse.StatusCode == HttpStatusCode.NotFound)
+                    {
+                        return null;
+                    }
+                    var content = reader.ReadToEnd();
+                    throw new WebException(ex.Message + Environment.NewLine + content, ex, ex.Status, ex.Response);
                 }
-                var stream = webResponse.GetResponseStream();
-                var reader = new StreamReader(stream);
-                var content = reader.ReadToEnd();
-                throw new WebException(ex.Message + Environment.NewLine + content, ex, ex.Status, ex.Response);
             }
         }
 

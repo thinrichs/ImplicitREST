@@ -19,7 +19,7 @@ namespace AutoRESTRepository
         public Repository(string baseRestUrl)
         {
             _processor = new JSONBasedRESTProcessor<TType, TKey>(_verbToUrlMapping);
-            BaseRestUri = baseRestUrl;
+            BaseRestUri = baseRestUrl.Trim();
         }
 
         private readonly Dictionary<RESTVerb, Func<TKey, string>> _verbToUrlMapping = new Dictionary<RESTVerb, Func<TKey, string>>
