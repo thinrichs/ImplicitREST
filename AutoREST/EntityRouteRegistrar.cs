@@ -56,7 +56,7 @@ namespace AutoREST
             return Routes
                .Where(r => r is ServiceRoute)
                .Cast<ServiceRoute>()
-               .Where(r => r.Url.Contains(routeName))
+               .Where(r => r.Url.Split('/')[0] == routeName)
                .FirstOrDefault();
         }
 

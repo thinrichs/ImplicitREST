@@ -10,7 +10,7 @@ namespace AutoRESTRepository
     public class JSONBasedRESTProcessor<TType, TKey> where TType : class
     {
         private static Dictionary<RESTVerb, Func<TKey, string>> _verbToUrlMapping;
-        private static JavaScriptSerializer _serializer = new JavaScriptSerializer(); // was using JSON.NET, but was getting wierd
+        private static readonly JavaScriptSerializer Serializer = new JavaScriptSerializer(); // was using JSON.NET, but was getting wierd
         // exceptions related to security.
         // see http://stackoverflow.com/questions/5511171/json-net-says-operation-may-destabilize-the-runtime-under-net-4-but-not-under
         /// <summary>
@@ -44,7 +44,7 @@ namespace AutoRESTRepository
         public static void AddItemToRequest(TType item, WebRequest request)
         {
             if (item == null) return;
-            var json = _serializer.Serialize(item);
+            var json = Serializer.Serialize(item);
             var byteData = Encoding.UTF8.GetBytes(json);
             request.ContentLength = byteData.Length;
 
@@ -81,7 +81,7 @@ namespace AutoRESTRepository
                 using (var reader = new StreamReader(response.GetResponseStream()))
                 {
                     var resultingJson = reader.ReadToEnd();
-                    var resultingItem = _serializer.Deserialize<TType>(resultingJson);
+                    var resultingItem = Serializer.Deserialize<TType>(resultingJson);
                     return resultingItem;
                 }
             }
