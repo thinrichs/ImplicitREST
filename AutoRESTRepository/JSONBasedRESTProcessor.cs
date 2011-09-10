@@ -92,7 +92,13 @@ namespace AutoRESTRepository
                 using (var reader = new StreamReader(stream))
                 {
                     var content = reader.ReadToEnd();
-                    throw new WebException(ex.Message + Environment.NewLine + content, ex, ex.Status, ex.Response);
+                    var message = ex.Message;
+                    var statusCode = (int)webResponse.StatusCode;
+                    if (statusCode == 404) // switch statement or Dictionary<int, func> for message?
+                    {
+                        message = String.Format("{0} not found!", webResponse.Headers["Location"]) + ex.Message;
+                    }
+                    throw new WebException(message + Environment.NewLine + content, ex, ex.Status, ex.Response);
                 }
             }
         }
