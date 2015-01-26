@@ -1,8 +1,8 @@
-AutoREST -- A .NET WCF based REST engine
+ImplicitREST -- A .NET WCF based REST engine
 ====================================
 ## LICENSE
 
-AutoREST is published under the [WTFPL](http://en.wikipedia.org/wiki/WTFPL)
+ImplicitREST is published under the [WTFPL](http://en.wikipedia.org/wiki/WTFPL)
 ```
            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
                    Version 2, December 2004
@@ -20,9 +20,9 @@ as the name is changed.
 
 ## DESCRIPTION
 
-AutoREST is a .NET 4 WCF based REST engine that supports both JSON and XML.
+ImplicitREST is a .NET 4 WCF based REST engine that supports both JSON and XML.
 
-AutoREST has a few requirements:
+ImplicitREST has a few requirements:
 
 * .NET 4.0
 * AspNetCompatibilityRequirementsMode has to be set to allowed.  
@@ -36,22 +36,22 @@ AutoREST has a few requirements:
 				<standardEndpoint name="" helpEnabled="true" automaticFormatSelectionEnabled="true"/>
 			</webHttpEndpoint>
 	
-AutoREST is built on the shoulders of giants, such as:
+ImplicitREST is built on the shoulders of giants, such as:
 
 * [Glenn Block for increasing WCF innovation by an order of magnitiude](http://blogs.msdn.com/b/gblock/)
 * [Steve Michelotti for this blog entry that showed the way](http://geekswithblogs.net/michelotti/archive/2010/08/21/restful-wcf-services-with-no-svc-file-and-no-config.aspx)
 * [StackOverflow in General](http://www.stackoverflow.com)
 * [Andras Zoltan](http://stackoverflow.com/users/157701/andras-zoltan) specifically for his answer to [this stackoverflow question](http://stackoverflow.com/questions/3021613/how-to-pre-load-all-deployed-assemblies-for-an-appdomain)
 
-There is a sample project called HowToConsumeAutoREST that shows... wait for it... How to Consume AutoREST.
+There is a sample project called HowToConsumeImplicitREST that shows... wait for it... How to Consume ImplicitREST.
 
 ## SAMPLE IMPLEMENTATION
 
 The sample implementation is the simplest thing that will work.  It does not follow the best practices.  Best Practices are laid out below this section.
-This and subsequent sections will assume the base URL for the sample is http://localhost/HowToConsumeAutoREST
+This and subsequent sections will assume the base URL for the sample is http://localhost/HowToConsumeImplicitREST
 To test the sample implementation perform the following:
 
-		POST to http://localhost/HowToConsumeAutoREST/RESTable/Create with an empty JSON payload like {} 
+		POST to http://localhost/HowToConsumeImplicitREST/RESTable/Create with an empty JSON payload like {} 
 		
 This should result a response with a JSON body similar to:
 
@@ -75,22 +75,22 @@ The RESTable type is exposed for access according to this interface:
 			void Delete(string id);
 		}
 		
-WCF gives you a help page for each type also.  The URL looks like this http://localhost/HowToConsumeAutoREST/Restable/help
+WCF gives you a help page for each type also.  The URL looks like this http://localhost/HowToConsumeImplicitREST/Restable/help
 		
-		Operations at http://localhost/HowToConsumeAutoREST/Restable
+		Operations at http://localhost/HowToConsumeImplicitREST/Restable
 		This page describes the service operations at this endpoint.
 
 		Uri		Method	Description
-		{id}	GET		Service at http://localhost/HowToConsumeAutoREST/Restable/{ID}
-				DELETE	Service at http://localhost/HowToConsumeAutoREST/Restable/{ID}
-		Create	POST	Service at http://localhost/HowToConsumeAutoREST/Restable/Create
-		Update	PUT		Service at http://localhost/HowToConsumeAutoREST/Restable/Update
+		{id}	GET		Service at http://localhost/HowToConsumeImplicitREST/Restable/{ID}
+				DELETE	Service at http://localhost/HowToConsumeImplicitREST/Restable/{ID}
+		Create	POST	Service at http://localhost/HowToConsumeImplicitREST/Restable/Create
+		Update	PUT		Service at http://localhost/HowToConsumeImplicitREST/Restable/Update
 				
 ## IMPLEMENTATION STEPS
 
 It is as simple as this:
 
-* Add a reference to the AutoREST project
+* Add a reference to the ImplicitREST project
 * Implement IRESTable on the items that you want to expose via REST, such as below.  Tag the class with DataContract, data payload elements with DataMember
 
 		[DataContract(Namespace = "")]
