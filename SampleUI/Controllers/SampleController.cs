@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Web.Mvc;
-using AutoRESTRepository;
+using ImplicitRESTRepository;
 using RESTModels;
 using SampleUI.Properties;
 

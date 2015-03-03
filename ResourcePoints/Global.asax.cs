@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Web;
 using System.Web.Routing;
-using AutoREST;
+using ImplicitREST;
 
 namespace ResourcePoints
 {

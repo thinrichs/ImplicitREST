@@ -1,4 +1,4 @@
-﻿using AutoREST;
+﻿using ImplicitREST;
 using RESTModels;
 
 namespace ResourcePoints

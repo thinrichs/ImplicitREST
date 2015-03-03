@@ -39,7 +39,7 @@
     <Compile Include="Sample.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AutoREST\AutoREST.csproj">
+    <ProjectReference Include="..\ImplicitREST\ImplicitREST.csproj">
       <Project>{98846192-8E08-4FB6-84CD-5911DA7BEF69}</Project>
       <Name>AutoREST</Name>
     </ProjectReference>

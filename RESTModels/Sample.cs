@@ -1,10 +1,10 @@
 ﻿using System.Runtime.Serialization;
-using AutoREST;
+using ImplicitREST;
 
 namespace RESTModels
 {
     /// <summary>
-    /// Sample class to show how AutoREST can work.  
+    /// Sample class to show how ImplicitREST can work.  
     /// </summary>
     [DataContract(Namespace = "")]
     [RouteName(Name = "SampleResource")]
